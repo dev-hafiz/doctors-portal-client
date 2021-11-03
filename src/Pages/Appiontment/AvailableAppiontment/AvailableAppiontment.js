@@ -47,13 +47,14 @@ const bookings = [
 const AvailableAppiontment = ({date}) => {
      return (
           <Container>
-               <Typography variant="h4" sx={{color : '#2FCCC6', fontWeight: '600', my:5}}>
+               <Typography variant="h4" sx={{color : '#1565C0', fontWeight: '600', my:5}}>
                Available Appiontment on {date.toDateString()}</Typography>
 
                <Box sx={{ flexGrow: 1 }}>
                <Grid container spacing={2}>
                {
                     bookings.map(booking => <Booking
+                         date={date}
                          key={booking.id}
                          booking={booking}
                     />)  
