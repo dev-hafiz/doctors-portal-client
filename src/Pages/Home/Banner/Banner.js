@@ -25,18 +25,18 @@ const Banner = () => {
           <Grid container spacing={2}>
             <Grid style={{...verticalCenter, textAlign: 'left'} } item xs={12} md={6}>
                <Box>
-               <Typography variant="h3">
+               <Typography variant="h3" sx={{ fontWeight:500, color: '#203047', mb:3}}>
                Your New Smile <br/>
                Start Here 
              </Typography>
              <Typography variant="h6" sx={{fontSize:'14px', color: 'gray', my:3, fontWeight:'normal'}}>
              Our teeth have such an important role to play in our lives. They help us chew and digest food, they help us to talk and speak clearly and they also give our face its shape 
              </Typography>
-             <Button style={{backgroundColor : '#67C5C7'}}  variant="contained"> GET APPIONTMENT</Button>
+             <Button style={{backgroundColor : '#0FCFEB'}}  variant="contained"> GET APPIONTMENT</Button>
                </Box>
             </Grid>
             <Grid style={verticalCenter} item xs={12} md={6}>
-              <img style={{ width: "450px"}} src={chair} alt="" />
+              <img style={{ width: "90%"}} src={chair} alt="" />
             </Grid>
           </Grid>
         </Container>

@@ -18,7 +18,7 @@ const AppiontmentBanner = () => {
           <Box style={appiontmentBg} sx={{ flexGrow: 1 }}>
           <Grid container spacing={2}>
           <Grid item xs={12} md={5}>
-            <img style={{width:400, marginTop: '-110px'}} src={doctor} alt="" />
+            <img style={{width:'90%', marginTop: '-137px'}} src={doctor} alt="" />
             </Grid>
             <Grid sx={{
                display: 'flex',
@@ -26,7 +26,7 @@ const AppiontmentBanner = () => {
                alignItems: 'center',
                textAlign: 'left',
                }} item xs={12} md={7}>
-             <Box sx={{width : 550}}>
+             <Box sx={{width : 550, px:3, pb:3}}>
              <Typography sx={{mb:4}} variant="h6" style={{color : '#67C5C7'}}>
               APPIONTMENT
              </Typography>
@@ -36,7 +36,7 @@ const AppiontmentBanner = () => {
              <Typography variant="h6" sx={{mb:2}}  style={{  fontWeight: 300 , color: '#fff' }}>
              It is an long established fact that a reader will be distracted by the readeable contact of a page when looking at its
             </Typography>
-             <Button style={{backgroundColor : '#67C5C7'}}  variant="contained">Learn More</Button>
+             <Button style={{backgroundColor : '#0FCFEB'}}  variant="contained">Learn More</Button>
              </Box>
             </Grid>
           </Grid>

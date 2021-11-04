@@ -19,11 +19,11 @@ const Service = ({service}) => {
           />
           <CardContent>
           
-          <Typography variant="h5" component="div">
+          <Typography variant="h5" sx={{fontWeight:500, color: '#203047'}} component="div">
                {name}
           </Typography>
           
-          <Typography sx={{ color: 'text.secondary', mt:2 }} variant="body2">
+          <Typography sx={{ color:'text.secondary', fontSize:'16px', fontWeight:'medium', mt:3}} variant="h6">
                {description}
           </Typography>
           </CardContent>

@@ -12,7 +12,7 @@ const services = [
      {
           name : "Fluoride Treatment",
           key: 101, 
-          description: "Fluoride treatments are typically professional treatments containing a high concentration of fluoride that a dentist or hygienist ",
+          description: "Fluoride treatments are typically professional treatments containing a high concentration of fluoridehigh concentration of that a dentistor",
           img:fluoride
      },
      {
@@ -24,7 +24,7 @@ const services = [
      {
           name : "Teath Wheatining",
           key: 103, 
-          description: "While teeth whitening is considered safe, you may experience some side effects from treatments: Teeth sensitivity.",
+          description: "While teeth whitening is considereome side effects from treatmentd safe, you may experience some side effects from treatments: Teeth sensitivity.",
           img:wheatining
      }
 ]
@@ -35,10 +35,10 @@ const Services = () => {
      return (
           <Box sx={{ flexGrow: 1 }}>
           <Container>
-          <Typography  sx={{ mt: 5 , fontWeight: 500, color: 'primary.main' }} variant="h5" component="div">
+          <Typography  sx={{ mt: 5 , fontWeight: 500, color:'#5FC7C7' }} variant="h5" component="div">
                OUR SERVICES
           </Typography>
-          <Typography sx={{ m: 3,  fontWeight: 600 }} variant="h4" component="div">
+          <Typography sx={{ m: 3,  fontWeight: 600,  color: '#203047' }} variant="h4" component="div">
                SERVICES WE PROVIED
           </Typography>
                <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
