@@ -6,23 +6,26 @@ import { getAuth, createUserWithEmailAndPassword ,  signOut , onAuthStateChanged
 initializeFirebase()
 const useFirebase = () =>{
 
-     const [user, setUser] = useState({})
+     const [user, setUser] = useState({});
+     const [isLoading, setIsLoading] = useState(true);
+     const [authError, setAuthError] = useState('')
 
      const auth = getAuth();
 
      //registerUser
      const registerUser =(email, password) =>{
+          setIsLoading(true)
           createUserWithEmailAndPassword(auth, email, password)
-          .then((userCredential) => {
-          // Signed in 
-          const user = userCredential.user;
-          // ...
+          .then((result) => {
+               setUser(result.user)
+               setAuthError('')
           })
           .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          // ..
-          });
+          setAuthError(error.message);
+          
+          })
+          .finally(()=> setIsLoading(false));
+          
      }
 
      //Observer user state
@@ -33,39 +36,46 @@ const useFirebase = () =>{
                } else {
                  setUser({})
                }
+               setIsLoading(false)
              });
           return ()=> unsubscribe;
      },[])
 
      //LoginUser
-     const loginUser = (email , password) =>{
+     const loginUser = (email , password, location, history) =>{
+          setIsLoading(true)
           signInWithEmailAndPassword(auth, email, password)
-          .then((userCredential) => {
-          // Signed in 
-          const user = userCredential.user;
-          // ...
+          .then((result) => {
+               const destination = location?.state?.from || '/';
+               history.replace(destination)
+               setUser(result.user)
+               setAuthError('')
           })
           .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          });
+          setAuthError(error.message);
+          })
+          .finally(()=> setIsLoading(false));;
 
      }
 
      //LogoutUser
      const logOut = () =>{
+          setIsLoading(true)
           signOut(auth).then(() => {
                setUser({})
              }).catch((error) => {
-              
-             });
+               setAuthError(error.message);
+             })
+             .finally(()=> setIsLoading(false));;
      }
 
      return{
           user,
           registerUser,
           loginUser,
-          logOut
+          logOut,
+          isLoading,
+          authError
 
      }
 

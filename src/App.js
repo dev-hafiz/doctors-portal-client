@@ -3,14 +3,14 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  
 } from "react-router-dom";
 import Home from './Pages/Home/Home/Home';
-import Navigation from './Pages/Shared/Navigation/Navigation';
 import Appiontment from './Pages/Appiontment/Appiontment/Appiontment';
 import Login from './Pages/Login/Login/Login';
 import Register from './Pages/Login/Register/Register';
 import AuthProvider from './context/AuthProvider/AuthProvider';
+import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
 
 function App() {
   return (
@@ -18,9 +18,9 @@ function App() {
       <AuthProvider>
       <Router>
       <Switch>
-          <Route path="/appiontment">
+          <PrivateRoute path="/appiontment">
             <Appiontment/>
-          </Route>
+          </PrivateRoute>
           <Route path="/home">
             <Home />
           </Route>

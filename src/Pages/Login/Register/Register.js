@@ -1,10 +1,13 @@
-import { Button, Grid, TextField } from '@mui/material';
+import { Alert, Button, CircularProgress, Grid, TextField } from '@mui/material';
 import React, { useState } from 'react';
 import login from '../../../images/login.png';
 import Typography from '@mui/material/Typography';
 import { NavLink } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
+
 
 const Register = () => {
+     const {registerUser , isLoading, authError , user} = useAuth()
      const [loginData, setLoginData] = useState({})
 
      const handleChange = e =>{
@@ -12,7 +15,6 @@ const Register = () => {
           const value = e.target.value;
           const newLoginData = {...loginData}
           newLoginData[filed] = value;
-          console.log( newLoginData)
           setLoginData(newLoginData);
      }
 
@@ -21,8 +23,10 @@ const Register = () => {
                alert('Your password did not match');
                return
           }
+          registerUser(loginData.email, loginData.password)
+
           e.preventDefault()
-          alert("Hellow")
+          
      }
 
      return (
@@ -32,9 +36,9 @@ const Register = () => {
                Register
           </Typography>
 
-          <form onSubmit={handleLoginSubmit}>
+          { !isLoading && <form onSubmit={handleLoginSubmit}>
           <TextField 
-          sx={{width:"75%"}}
+          sx={{width:"75%" , mt:3}}
           id="standard-basic" 
           label="Your Email" 
           name="email"
@@ -44,7 +48,7 @@ const Register = () => {
           variant="standard" />
 
           <TextField 
-          sx={{width:"75%"}}
+          sx={{width:"75%" , mt:3}}
           id="standard-basic" 
           label="Password" 
           name="password"
@@ -53,7 +57,7 @@ const Register = () => {
           type="password"
           variant="standard" />
           <TextField 
-          sx={{width:"75%"}}
+          sx={{width:"75%" , mt:3}}
           id="standard-basic" 
           label="Re Type Password" 
           name="password2"
@@ -63,10 +67,13 @@ const Register = () => {
           variant="standard" />
           <br />
           <Button sx={{width:"75%", mt:2}} variant="contained" type="submit">Register</Button>
-          </form>
           <NavLink style={{textDecoration: 'none'}} to="/login">
           <Button variant="text">Already Registered? Please Login</Button>
           </NavLink>
+          </form>}
+         {isLoading && <CircularProgress />}
+         {user?.email && <Alert severity="success">This is a success alert — check it out!</Alert>}
+         { authError && <Alert severity="error">{authError}</Alert>}
           </Grid>
           <Grid item xs={12} md={6}>
            <img style={{width:"100%"}} src={login} alt="" />

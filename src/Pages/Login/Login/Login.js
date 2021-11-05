@@ -1,10 +1,13 @@
-import { Button, Grid, TextField } from '@mui/material';
+import { Alert, Button, CircularProgress, Grid, TextField } from '@mui/material';
 import React, { useState } from 'react';
 import login from '../../../images/login.png';
 import Typography from '@mui/material/Typography';
-import { NavLink } from 'react-router-dom';
-
+import { NavLink, useLocation, useHistory } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
 const Login = () => {
+     const location = useLocation()
+     const history = useHistory()
+     const {loginUser, isLoading, authError, user} = useAuth()
 
      const [loginData, setLoginData] = useState({})
 
@@ -16,8 +19,10 @@ const Login = () => {
           setLoginData(newLoginData);
      }
      const handleLoginSubmit = e =>{
+
+          loginUser(loginData.email, loginData.password, location, history)
           e.preventDefault()
-          alert("Hellow")
+          
      }
      return (
           <Grid container spacing={2}>
@@ -28,7 +33,7 @@ const Login = () => {
 
           <form onSubmit={handleLoginSubmit}>
           <TextField 
-          sx={{width:"75%"}}
+          sx={{width:"75%", mt:3}}
           id="standard-basic" 
           label="Your Email" 
           name="email"
@@ -37,7 +42,7 @@ const Login = () => {
           variant="standard" />
 
           <TextField 
-          sx={{width:"75%"}}
+          sx={{width:"75%" , mt:3}}
           id="standard-basic" 
           label="Password" 
           name="password"
@@ -50,6 +55,10 @@ const Login = () => {
           <NavLink style={{textDecoration: 'none'}} to="/register">
           <Button variant="text">New User ? Please Register</Button>
           </NavLink>
+
+          {isLoading && <CircularProgress />}
+         {user?.email && <Alert severity="success">This is a success alert — check it out!</Alert>}
+         { authError && <Alert severity="error">{authError}</Alert>}
           </Grid>
           <Grid item xs={12} md={6}>
            <img style={{width:"100%"}} src={login} alt="" />
