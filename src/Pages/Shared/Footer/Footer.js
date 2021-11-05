@@ -109,7 +109,10 @@ const Footer = () => {
                </Typography>
                </Grid>
                </Grid>
-               </Box>   
+               </Box>  
+               <Typography style={{color:'#676767', fontSize:'12px', fontWeight:'medium', textDecoration:'none', marginTop:'60px'}}  variant="h6">
+                         CopyRight 2021 All Right Reserved
+               </Typography> 
              </Container>
           </Box>
      );

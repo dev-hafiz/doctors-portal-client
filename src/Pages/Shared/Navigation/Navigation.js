@@ -26,7 +26,9 @@ const Navigation = () => {
                 Doctor's Portal
               </Typography>
               <Link to="/appiontment"> <Button color="inherit">Appiontment</Button></Link>
+              <Link to="/login">
               <Button color="inherit">Login</Button>
+              </Link>
             </Toolbar>
           </AppBar>
         </Box>
