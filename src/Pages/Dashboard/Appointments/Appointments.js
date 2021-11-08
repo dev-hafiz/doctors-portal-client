@@ -15,7 +15,7 @@ const Appointments = ({date}) => {
      const [appiontments, setAppiontments] = useState([])
 
      useEffect( ()=>{
-          const url = `http://localhost:5000/appiontments?email=${user.email}&date=${date}`
+          const url = `https://aqueous-shore-28644.herokuapp.com/appiontments?email=${user.email}&date=${date}`
           fetch(url, {
             headers:{
               'authorization': `Bearer ${token}`,

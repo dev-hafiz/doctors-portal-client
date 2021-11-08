@@ -43,7 +43,7 @@ const BookingModal = ({openBooking, handleBookingClose, booking, date, setBookin
                date: date.toLocaleDateString()
           }
           
-          fetch('http://localhost:5000/appiontments',{
+          fetch('https://aqueous-shore-28644.herokuapp.com/appiontments',{
                method:'POST',
                headers:{
                     'content-type': 'application/json'
